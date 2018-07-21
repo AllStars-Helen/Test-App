@@ -14,12 +14,13 @@ export class CreateComponent implements OnInit {
   streetText: string;
   buildText: string;
   flatText: string;
+  // TODO add a comment textarea
 
   constructor(private router: Router) {
   }
 
   ngOnInit() {
-    // ToDo validator
+    // TODO validator
   }
 
   addNewAddress() {
@@ -33,6 +34,7 @@ export class CreateComponent implements OnInit {
 
     this.addressbook.push(this.addressbookItem);
     const newAddress = JSON.stringify(this.addressbookItem);
+    // TODO change fullName to id
     localStorage.setItem(this.fullNameText, newAddress);
 
     // clear all fields

@@ -1,3 +1,15 @@
-<p>
-  edit works!
-</p>
+<h1>Edit Address</h1>
+<div class="container">
+  <div class="new-address-form">
+    <p class="subscribe-text">Edit exist address</p>
+    <form>
+      <input type="text" class="txt" placeholder="FullName" name="fullname" [(ngModel)]="fullNameText" required>
+      <input type="text" class="txt" placeholder="City" name="city" [(ngModel)]="cityText" required>
+      <input type="text" class="txt" placeholder="Street" name="street" [(ngModel)]="streetText" required>
+      <input type="text" class="txt" placeholder="Build" name="build" [(ngModel)]="buildText" required>
+      <input type="text" class="txt" placeholder="Flat" name="flat" [(ngModel)]="flatText">
+
+      <input type="submit" class="btn" value="Add new address" (click)="editAddress()" routerLink="list">
+    </form>
+  </div>
+</div>

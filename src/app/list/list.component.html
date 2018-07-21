@@ -4,11 +4,12 @@
         <table>
             <thead>
                 <tr>
-                    <td>Name</td>
-                    <td>City</td>
-                    <td>Street</td>
-                    <td>Build</td>
-                    <td>Flat</td>
+                    <th>Name</th>
+                    <th>City</th>
+                    <th>Street</th>
+                    <th>Build</th>
+                    <th>Flat</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -18,6 +19,7 @@
                     <td>{{ address.street }}</td>
                     <td>{{ address.build }}</td>
                     <td>{{ address.flat }}</td>
+                    <td><a routerLink="/edit/{{ address.fullName }}">Edit</a></td>
                 </tr>
             </tbody>
         </table>
