@@ -7,37 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListComponent implements OnInit {
   addressbook = [];
-  addressbookItem = {};
-  fullNameText: string;
-  cityText: string;
-  streetText: string;
-  buildText: string;
-  flatText: string;
 
   constructor() {
   }
 
   ngOnInit() {
+    for (let i = 0, len = localStorage.length; i < len; i++) {
+      const key = localStorage.key(i);
+      const value = localStorage[key];
+      const item = JSON.parse(value);
+      this.addressbook[i] = item;
+    }
   }
 
-  addNewAddress() {
-    this.addressbookItem = {
-      'fullName' : this.fullNameText,
-      'city' : this.cityText,
-      'street' : this.streetText,
-      'build' : this.buildText,
-      'flat' : this.flatText
-    };
-
-    this.addressbook.push(this.addressbookItem);
-    const newAddress = JSON.stringify(this.addressbookItem);
-    localStorage.setItem(this.fullNameText, newAddress);
-
-    // clear all fields
-    this.fullNameText = '';
-    this.cityText = '';
-    this.streetText = '';
-    this.buildText = '';
-    this.flatText = '';
-  }
 }
