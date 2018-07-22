@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { ListComponent } from './list/list.component';
 import { CreateComponent } from './create/create.component';
 import { EditComponent } from './edit/edit.component';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,11 @@ import { EditComponent } from './edit/edit.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDPjWPWWV1Q4P3n1uKP2BEocwGoXyGF4xk',
+      libraries: ['places']
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

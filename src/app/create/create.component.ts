@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
+import { AgmCoreModule } from '@agm/core';
 
 @Component({
   selector: 'app-create',
@@ -14,13 +15,24 @@ export class CreateComponent implements OnInit {
   streetText: string;
   buildText: string;
   flatText: string;
+  lng: number = 51.678418;
+  lat: number = 7.809007;
+
+  // maps
   // TODO add a comment textarea
 
   constructor(private router: Router) {
+
   }
 
   ngOnInit() {
     // TODO validator
+
+  }
+
+  placeMarker($event) {
+    this.lat = $event.coords.lat;
+    this.lng = $event.coords.lng;
   }
 
   addNewAddress() {
