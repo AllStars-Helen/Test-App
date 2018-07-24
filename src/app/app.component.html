@@ -1,11 +1,15 @@
 <div>
-  <h1 style="text-align:center">
-    Welcome to {{ title }}!
-  </h1>
-  <ul>
-    <li><a routerLink="list">All Addresses</a></li>
-    <li><a routerLink="create">Add new address</a></li>
-  </ul>
+  <div class="header">
+    <div class="container">
+      <h1>
+        Welcome to {{ title }}!
+      </h1>
+      <ul>
+        <li><a routerLink="list">All Addresses</a></li>
+        <li><a routerLink="create">Add new address</a></li>
+      </ul>
+    </div>
+  </div>
 </div>
 
 <router-outlet></router-outlet>

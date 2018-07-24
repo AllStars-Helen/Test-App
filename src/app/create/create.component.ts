@@ -15,8 +15,9 @@ export class CreateComponent implements OnInit {
   streetText: string;
   buildText: string;
   flatText: string;
-  lng: number = 51.678418;
-  lat: number = 7.809007;
+  noticeText: string;
+  lng: number = 83.111594;
+  lat: number = 54.858021;
 
   // maps
   // TODO add a comment textarea
@@ -41,7 +42,8 @@ export class CreateComponent implements OnInit {
       'city': this.cityText,
       'street': this.streetText,
       'build': this.buildText,
-      'flat': this.flatText
+      'flat': this.flatText,
+      'notice': this.noticeText
     };
 
     this.addressbook.push(this.addressbookItem);

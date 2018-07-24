@@ -1,0 +1,41 @@
+//colors
+$main-text-color: #3f3f3f;
+$table-bkgr: #fff;
+$table-border: #3f3f3f;
+$table-even-tr: #e8e8e8;
+$table-hover-tr: #ffedb1;
+
+//dimensions
+$default-radius: 5px;
+
+table{
+  width: 60%;
+  margin: 0 auto;
+  background: $table-bkgr;
+  border: 2px solid $table-border;
+  border-radius: $default-radius;
+  thead{
+    font-size: 1.2em;
+    text-align: left;
+    tr{
+      cursor: default;
+      &:hover{
+        background: $table-bkgr;
+      }
+    }
+  }
+  tr{
+    cursor: pointer;
+    &:nth-child(even){
+      background: $table-even-tr;
+    }
+    &:hover{
+      background: $table-hover-tr;
+    }
+    td{
+      font-size: .8em;
+      color: $main-text-color;
+      padding: 5px;
+    }
+  }
+}

@@ -9,17 +9,17 @@
                     <th>Street</th>
                     <th>Build</th>
                     <th>Flat</th>
-                    <th></th>
+                    <th>Notice</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let address of addressbook">
+                <tr *ngFor="let address of addressbook" routerLink="/edit/{{ address.fullName }}">
                     <td>{{ address.fullName }}</td>
                     <td>{{ address.city }}</td>
                     <td>{{ address.street }}</td>
                     <td>{{ address.build }}</td>
                     <td>{{ address.flat }}</td>
-                    <td><a routerLink="/edit/{{ address.fullName }}">Edit</a></td>
+                    <td>{{ address.notice }}</td>
                 </tr>
             </tbody>
         </table>

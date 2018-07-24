@@ -14,6 +14,7 @@ export class EditComponent implements OnInit {
   streetText: string;
   buildText: string;
   flatText: string;
+  noticeText: string;
 
   constructor(private router: Router, private activRoute: ActivatedRoute) {
   }
@@ -30,6 +31,7 @@ export class EditComponent implements OnInit {
     this.streetText = addressArray.street;
     this.buildText = addressArray.build;
     this.flatText = addressArray.flat;
+    this.noticeText = addressArray.notice;
   }
 
   editAddress() {
@@ -38,7 +40,8 @@ export class EditComponent implements OnInit {
       'city': this.cityText,
       'street': this.streetText,
       'build': this.buildText,
-      'flat': this.flatText
+      'flat': this.flatText,
+      'notice': this.noticeText
     };
     const newAddress = JSON.stringify(this.addressbookItem);
     localStorage.setItem(this.fullNameText, newAddress);
