@@ -20,4 +20,17 @@ export class ListComponent implements OnInit {
     }
   }
 
+  myFunction() {
+    // TODO
+  }
+
+  deleteAddress(address) {
+    const confirmation = confirm('Do you really want to delete this address?');
+    if (confirmation) {
+      localStorage.removeItem(address.addressId);
+      const index = this.addressbook.indexOf(address);
+      this.addressbook.splice(index, 1);
+    }
+  }
+
 }

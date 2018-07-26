@@ -3,39 +3,83 @@ $main-text-color: #3f3f3f;
 $table-bkgr: #fff;
 $table-border: #3f3f3f;
 $table-even-tr: #e8e8e8;
-$table-hover-tr: #ffedb1;
+$table-hover-tr: #fffbd4;
+$table-delete-tr: #ef0000;
 
 //dimensions
 $default-radius: 5px;
 
-table{
-  width: 60%;
+#list .container{
+  padding: 0;
+}
+.table{
+  width: 80%;
   margin: 0 auto;
   background: $table-bkgr;
   border: 2px solid $table-border;
   border-radius: $default-radius;
-  thead{
+  .thead{
     font-size: 1.2em;
     text-align: left;
-    tr{
+    .tr{
       cursor: default;
+      display: block;
+      position: relative;
+      background: transparent;
       &:hover{
-        background: $table-bkgr;
+        background: transparent;
+      }
+      .th{
+        width: calc(100% / 3);
+        float: left;
+        padding: 8px;
+        &.del{
+          width: 40px;
+          position: absolute;
+          right: 0;
+          top: 0;
+          &:hover{
+            color: $main-text-color;
+          }
+        }
       }
     }
   }
-  tr{
+  .tbody{
+    clear: both;
+  }
+  .tr{
     cursor: pointer;
-    &:nth-child(even){
+    padding-right: 40px;
+    position: relative;
+    overflow: hidden;
+    &:nth-child(odd){
       background: $table-even-tr;
     }
-    &:hover{
-      background: $table-hover-tr;
+    .address-line{
+      overflow: hidden;
+      &:hover{
+        font-weight: bold;
+        text-shadow: 0 0 2px $table-hover-tr;
+      }
+      .td{
+        width: calc(100% / 3);
+        float: left;
+        font-size: .8em;
+        color: $main-text-color;
+        padding: 8px;
+      }
     }
-    td{
-      font-size: .8em;
-      color: $main-text-color;
-      padding: 5px;
+    .del{
+      width: 40px;
+      height: 28px;
+      position: absolute;
+      right: 0;
+      top: 7px;
+      text-align: center;
+      &:hover{
+        color: $table-delete-tr;
+      }
     }
   }
 }

@@ -1,24 +1,26 @@
 <h1>Add new Address</h1>
 <div class="container">
     <div class="new-address-form">
-        <p class="small-txt">Use this form to add a new address</p>
-        <form>
-            <input type="text" class="txt" placeholder="FullName" name="fullname" [(ngModel)]="fullNameText" required="required">
-            <input type="text" class="txt" placeholder="City" name="city" [(ngModel)]="cityText" required="required">
-            <input type="text" class="txt" placeholder="Street" name="street" [(ngModel)]="streetText" required="required">
-            <input type="text" class="txt" placeholder="Build" name="build" [(ngModel)]="buildText" required="required">
-            <input type="text" class="txt" placeholder="Flat" name="flat" [(ngModel)]="flatText">
-            <textarea type="text" class="txt" placeholder="Some notices here..." name="notice"
-                      [(ngModel)]="noticeText"></textarea>
+        <form class="row">
+            <div class="col map-wrapper">
+                <h2>Placement on map</h2>
+                <p class="small-txt">Location is: longitude={{ lng.toFixed(6) }}, latitude={{ lat.toFixed(6) }}</p>
+                <agm-map [latitude]="lat" [longitude]="lng" [zoom]="16" style="height: 300px;"
+                         (mapClick)="placeMarker($event)">
+                    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+                </agm-map>
 
-            <h2>Placement on map</h2>
-            <p class="small-txt">Location is: longitude={{ lng.toFixed(6) }}, latitude={{ lat.toFixed(6) }}</p>
-            <agm-map [latitude]="lat" [longitude]="lng" [zoom]="16" style="height: 300px;" (mapClick)="placeMarker($event)">
-                <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-            </agm-map>
+            </div>
+            <div class="col">
+                <h2>New address</h2>
+                <p class="small-txt">Use this fields to add a new address</p>
+                <input type="text" class="txt" placeholder="FullName" name="fullname" [(ngModel)]="fullNameText">
+                <input type="text" class="txt" placeholder="Address" name="address" [(ngModel)]="addressText">
+                <textarea type="text" class="txt" placeholder="Some notices here..." name="notice"
+                          [(ngModel)]="noticeText"></textarea>
+                <button type="button" class="btn" (click)="addNewAddress()" routerLink="list">Save</button>
+            </div>
 
-
-            <input type="submit" class="btn" value="Add new address" (click)="addNewAddress()" routerLink="list">
         </form>
     </div>
 </div>

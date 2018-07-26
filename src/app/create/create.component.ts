@@ -11,24 +11,18 @@ export class CreateComponent implements OnInit {
   addressbook = [];
   addressbookItem = {};
   fullNameText: string;
-  cityText: string;
-  streetText: string;
-  buildText: string;
-  flatText: string;
+  addressText: string;
   noticeText: string;
   lng: number = 83.111594;
   lat: number = 54.858021;
 
   // maps
-  // TODO add a comment textarea
 
   constructor(private router: Router) {
 
   }
 
   ngOnInit() {
-    // TODO validator
-
   }
 
   placeMarker($event) {
@@ -36,28 +30,43 @@ export class CreateComponent implements OnInit {
     this.lng = $event.coords.lng;
   }
 
-  addNewAddress() {
-    this.addressbookItem = {
-      'fullName': this.fullNameText,
-      'city': this.cityText,
-      'street': this.streetText,
-      'build': this.buildText,
-      'flat': this.flatText,
-      'notice': this.noticeText
-    };
+  fullNameValidate() {
+    // TODO
+    return true;
+  }
 
+  addressValidate() {
+    // TODO
+    return true;
+  }
+
+  noticeValidate() {
+    // TODO
+    return true;
+  }
+
+  addNewAddress() {
+    const fullNameIsValid = this.fullNameValidate();
+    const addressIsValid = this.addressValidate();
+    const noticeIsValid = this.noticeValidate();
+    if (fullNameIsValid && addressIsValid && noticeIsValid) {
+      this.saveAddress();
+    }
+  }
+
+  saveAddress() {
+    const id = (new Date()).toString();
+    this.addressbookItem = {
+      'addressId': id,
+      'fullName': this.fullNameText,
+      'address': this.addressText,
+      'notice': this.noticeText,
+      'lng': this.lng,
+      'lat': this.lat
+    };
     this.addressbook.push(this.addressbookItem);
     const newAddress = JSON.stringify(this.addressbookItem);
-    // TODO change fullName to id
-    localStorage.setItem(this.fullNameText, newAddress);
-
-    // clear all fields
-    this.fullNameText = '';
-    this.cityText = '';
-    this.streetText = '';
-    this.buildText = '';
-    this.flatText = '';
-
+    localStorage.setItem(id, newAddress);
     this.router.navigate(['/list']);
   }
 }

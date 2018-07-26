@@ -10,11 +10,10 @@ import { Router, RouterModule, ActivatedRoute } from '@angular/router';
 export class EditComponent implements OnInit {
   addressbookItem = {};
   fullNameText: string;
-  cityText: string;
-  streetText: string;
-  buildText: string;
-  flatText: string;
+  addressText: string;
   noticeText: string;
+  lng: number;
+  lat: number;
 
   constructor(private router: Router, private activRoute: ActivatedRoute) {
   }
@@ -23,25 +22,28 @@ export class EditComponent implements OnInit {
     this.activRoute.params.subscribe(params => this.loadAddress(params.id));
   }
 
+  placeMarker($event) {
+    this.lat = $event.coords.lat;
+    this.lng = $event.coords.lng;
+  }
+
   loadAddress(id) {
     const loadedAddress = localStorage.getItem(id);
     const addressArray = JSON.parse(loadedAddress);
     this.fullNameText = addressArray.fullName;
-    this.cityText = addressArray.city;
-    this.streetText = addressArray.street;
-    this.buildText = addressArray.build;
-    this.flatText = addressArray.flat;
+    this.addressText = addressArray.address;
     this.noticeText = addressArray.notice;
+    this.lng = addressArray.lng;
+    this.lat = addressArray.lat;
   }
 
   editAddress() {
     this.addressbookItem = {
       'fullName': this.fullNameText,
-      'city': this.cityText,
-      'street': this.streetText,
-      'build': this.buildText,
-      'flat': this.flatText,
-      'notice': this.noticeText
+      'address': this.addressText,
+      'notice': this.noticeText,
+      'lng': this.lng,
+      'lat': this.lat
     };
     const newAddress = JSON.stringify(this.addressbookItem);
     localStorage.setItem(this.fullNameText, newAddress);

@@ -1,17 +1,29 @@
 <h1>Edit Address</h1>
 <div class="container">
-  <div class="new-address-form">
-    <p class="small-txt">Edit exist address</p>
-    <form>
-      <input type="text" class="txt" placeholder="FullName" name="fullname" [(ngModel)]="fullNameText" required>
-      <input type="text" class="txt" placeholder="City" name="city" [(ngModel)]="cityText" required>
-      <input type="text" class="txt" placeholder="Street" name="street" [(ngModel)]="streetText" required>
-      <input type="text" class="txt" placeholder="Build" name="build" [(ngModel)]="buildText" required>
-      <input type="text" class="txt" placeholder="Flat" name="flat" [(ngModel)]="flatText">
-      <textarea type="text" class="txt" placeholder="Some notices here..." name="notice"
-                [(ngModel)]="noticeText"></textarea>
+    <div class="new-address-form">
+        <form>
+            <div class="col map-wrapper">
+                <h2>Placement on map</h2>
+                <p class="small-txt">Location is: longitude={{ this.lng.toFixed(6) }}, latitude={{ this.lat.toFixed(6) }}</p>
+                <agm-map [latitude]="lat" [longitude]="lng" [zoom]="16" style="height: 300px;"
+                         (mapClick)="placeMarker($event)">
+                    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+                </agm-map>
 
-      <input type="submit" class="btn" value="Update address" (click)="editAddress()" routerLink="list">
-    </form>
-  </div>
+            </div>
+            <div class="col">
+                <h2>Exist address</h2>
+                <p class="small-txt">Update the data of exist address</p>
+
+                <input type="text" class="txt" placeholder="FullName" name="fullname" [(ngModel)]="fullNameText"
+                       required>
+                <input type="text" class="txt" placeholder="Address" name="address" [(ngModel)]="addressText" required>
+                <textarea type="text" class="txt" placeholder="Some notices here..." name="notice"
+                          [(ngModel)]="noticeText"></textarea>
+
+                <input type="submit" class="btn" value="Update address" (click)="editAddress()" routerLink="list">
+
+            </div>
+        </form>
+    </div>
 </div>

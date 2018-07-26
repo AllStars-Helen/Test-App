@@ -13,18 +13,32 @@ $default-padding: 5px;
 
 html,
 body {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
   font-family: Roboto;
   font-size: 16px;
   color: $main-text-color;
   margin: 0;
+  *{
+    box-sizing: border-box;
+  }
+}
+body{
+  padding-bottom: 20px;
 }
 
-.container {
-  width: 80%;
-  margin: 0 auto;
+.container,
+.col{
+  width: 100%;
+  padding: 0 15px;
+}
+
+.row{
+  margin: 0 -15px;
+  overflow: hidden;
+}
+
+
+.hidden{
+  display: none;
 }
 
 h1, h2 {
@@ -64,12 +78,12 @@ input,
 textarea {
   padding: $default-padding;
   border-radius: $default-radius;
-  min-width: 290px;
+  width: 290px;
+  max-width: 100%;
   display: block;
   margin-bottom: 10px;
   -webkit-appearance: none;
   border: 1px solid $input-border-color;
-  box-sizing: border-box;
   &:focus{
     box-shadow: inset 0 0 6px $input-focus-color;
     outline: none;
@@ -81,6 +95,8 @@ textarea{
 
 .btn{
   display: block;
+  width: 290px;
+  max-width: 100%;
   border-radius: $default-radius;
   border: 1px solid $input-border-color;
   min-width: unset;
@@ -95,27 +111,47 @@ textarea{
 }
 
 .header {
-  padding: 20px 0;
+  padding: 10px 0;
   background: rgba(0, 0, 0, 0.3);
   overflow: hidden;
   .container{
-    display: -webkit-flex;
-    display: flex;
-    justify-content: space-between;
-    -webkit-align-items: center;
-    align-items: center;
-  }
-  h1 {
-    margin: 0;
-  }
-  ul {
-    margin: 0;
-    li {
-      display: inline-block;
-      margin-left: 20px;
-      a{
-        font-weight: bold;
+    h1 {
+      margin: 0;
+    }
+    ul {
+      margin: 15px 0 0 0;
+      text-align: center;
+      li {
+        display: inline-block;
+        margin-left: 20px;
+        a{
+          font-weight: bold;
+        }
       }
     }
+  }
+}
+
+@media only screen and (min-width: 769px) {
+  .header{
+    padding: 20px 0;
+    .container{
+      display: -webkit-flex;
+      display: flex;
+      justify-content: space-between;
+      -webkit-align-items: center;
+      align-items: center;
+      ul{
+        margin: 0;
+      }
+    }
+  }
+  .container{
+    width: 80%;
+    margin: 0 auto;
+  }
+  .col{
+    width: 50%;
+    float: left;
   }
 }

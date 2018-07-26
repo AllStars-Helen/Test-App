@@ -1,27 +1,28 @@
 <h1>My address book</h1>
 <div class="container">
-    <div class="list">
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>City</th>
-                    <th>Street</th>
-                    <th>Build</th>
-                    <th>Flat</th>
-                    <th>Notice</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let address of addressbook" routerLink="/edit/{{ address.fullName }}">
-                    <td>{{ address.fullName }}</td>
-                    <td>{{ address.city }}</td>
-                    <td>{{ address.street }}</td>
-                    <td>{{ address.build }}</td>
-                    <td>{{ address.flat }}</td>
-                    <td>{{ address.notice }}</td>
-                </tr>
-            </tbody>
-        </table>
+    <div id="list">
+        <div class="container"><input type="text" id="searchInput" (keyup)="myFunction()" placeholder="Search for addresses.."></div>
+        <div class="table">
+            <div class="thead">
+                <div class="tr">
+                    <div class="th">Name</div>
+                    <div class="th">Address</div>
+                    <div class="th">Notice</div>
+                    <div class="th del">Del</div>
+                </div>
+            </div>
+            <div class="tbody">
+                <div class="tr" *ngFor="let address of addressbook">
+                    <div class="address-line" routerLink="/edit/{{ address.addressId }}">
+                        <div class="td">{{ address.fullName }}</div>
+                        <div class="td">{{ address.address }}</div>
+                        <div class="td">{{ address.notice }}</div>
+                    </div>
+                    <div class="del" (click)="deleteAddress(address)">
+                        <i class="fas fa-trash-alt"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

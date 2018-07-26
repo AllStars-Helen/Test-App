@@ -21,7 +21,7 @@ import { AgmCoreModule } from '@agm/core';
     AppRoutingModule,
     FormsModule,
     AgmCoreModule.forRoot({
-      apiKey: 'YOUR_API_KEY',
+      apiKey: 'AIzaSyAIx9aW36geNHQKjZrjLEyjom39HkP4zY8',
       libraries: ['places']
     })
   ],
